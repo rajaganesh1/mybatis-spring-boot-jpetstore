@@ -20,6 +20,11 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
+			  
+	 stage('Cobertura - report') {
+            steps {
+                sh 'mvn cobertura:cobertura'
+            }
         }
            
     }
