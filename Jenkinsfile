@@ -18,7 +18,7 @@ pipeline {
 			
             post {
                 always {
-                    cobertura coberturaReportFile: '*/.xml'
+                    junit coberturaReportFile: '*/.xml'
                 }
             }
 			}
