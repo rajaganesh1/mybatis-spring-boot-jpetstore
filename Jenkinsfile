@@ -14,7 +14,7 @@ pipeline {
 		stage('Unit Test & Code Coverage') {
             steps {
                 
-		    sh 'mvn cobertura:cobertura'
+		    sh 'mvn test cobertura:cobertura'
             }
 			
            }
