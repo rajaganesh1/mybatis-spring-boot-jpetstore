@@ -11,22 +11,13 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-		stage('Test') {
+		stage('Unit Test & Code Coverage') {
             steps {
-                sh 'mvn test'
+                
+		    sh 'mvn cobertura:cobertura'
             }
 			
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-			}
-		stage('Cobertura - report') {
-            steps {
-                sh 'mvn cobertura:cobertura'
-            }
-        }
-           
+           }
+		    
     }
 }
