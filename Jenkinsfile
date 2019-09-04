@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'docker-maven'}
+    agent {label 'test_slave'}
     stages {
 		stage('SCM Checkout') {
 		    steps{
@@ -9,6 +9,12 @@ pipeline {
 		stage('Build') {
 		    steps {
                 sh 'mvn -B -DskipTests clean package'
+            }
+        }
+		
+		stage('Deploy App') {
+		    steps {
+                sh 'mvn spring-boot:run'
             }
         }
 		stage('Test') {
